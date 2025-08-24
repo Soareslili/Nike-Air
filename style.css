@@ -1,63 +1,126 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap");
 
-* {
-  margin: 0;
-  padding: 0;
+*,
+*::before,
+*::after {
   box-sizing: border-box;
-  font-family: "Nunito Sans", sans-serif;
-  overflow: hidden;
 }
+
+:root {
+  --bg: #fff;
+  --text: #0a0a0a;
+  --muted: #00000080;
+  --btn: #000000;
+  --btn-text: #ffffff;
+  --btn-hover: rgb(234, 234, 110);
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Nunito Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.4;
+  overflow-x: hidden; 
+}
+
+
+.hero {
+  display: grid;
+  place-items: center;
+  min-height: 100dvh; 
+  padding: 2rem 1.25rem;
+}
+
 
 .container {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
+  width: 100%;
+  max-width: 1120px;
+  margin-inline: auto;
+
+
+  display: grid;
+  gap: 2rem;
   align-items: center;
-  justify-content: space-between;
 }
 
+@media (min-width: 760px) {
+  .container {
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: clamp(2rem, 5vw, 4rem);
+  }
+}
+
+
 .conteudo-principal {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  margin-left: 100px;
+  display: grid;
+  align-content: start;
+  justify-items: start;
+  gap: 1rem;
+}
+
+
+@media (max-width: 759px) {
+  .conteudo-principal {
+    justify-items: center;
+    text-align: center;
+  }
 }
 
 h1 {
-  width: 300px;
-  font-size: 50px;
+  margin: 0;
+
+  font-size: clamp(2rem, 5vw + 0.25rem, 3.5rem);
   font-weight: 800;
-  line-height: 71px;
-  text-align: left;
+  line-height: 1.1;
+  max-width: 16ch; 
 }
 
 p {
-  width: 250px;
-  height: 48px;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 24px;
-  color: #00000080;
-  margin-right: 50px;
+  margin: 0;
+  font-size: clamp(1rem, 1.2vw + 0.6rem, 1.125rem);
+  color: var(--muted);
+  max-width: 45ch;
 }
 
-button {
-  width: 200px;
-  height: 40px;
-  margin-right: 100px;
-  margin-top: 30px;
-  text-transform: uppercase;
-  font-weight: 700;
-  text-align: center;
-  background-color: black;
-  color: #ffff;
+
+.cta {
+  margin-top: 0.5rem;
+  padding: 0.9rem 1.25rem;
+  min-width: 200px;
+
   border: none;
+  border-radius: 0.5rem;
+  background: var(--btn);
+  color: var(--btn-text);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
   cursor: pointer;
+
+  transition: transform 0.2s ease, background 0.3s ease, color 0.3s ease;
 }
 
-button:hover {
-  background-color: rgb(234, 234, 110);
+.cta:hover {
+  background: var(--btn-hover);
   color: #000;
-  transition: 0.9s ease-in-out;
+  transform: translateY(-2px);
 }
 
+.cta:focus-visible {
+  outline: 3px solid #7aa2ff;
+  outline-offset: 2px;
+}
+
+
+.media {
+  display: grid;
+  place-items: center;
+}
+
+.media img {
+  width: min(90vw, 560px); 
+}
